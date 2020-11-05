@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Content.css";
 
@@ -25,14 +24,11 @@ function Content(...props) {
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque voluptatum
       tenetur voluptatem neque nihil, laborum deserunt quas illum ut! Officia?
 
-        {/* CSS inline é coisa feia, talvez criar uma class css com essas regras seja mais bonito */}
-      <section style={{display: 'flex', justifyContent: 'space-evenly'}}> 
+      {/* CSS inline é coisa feia, talvez criar uma class css com essas regras seja mais bonito */}
+      <section style={{ display: "flex", justifyContent: "space-evenly" }}>
         <img src="https://picsum.photos/id/237/400/300" alt="Mock" />
         <img src="https://picsum.photos/id/69/400/300" alt="Mock" />
       </section>
-
-      <FontAwesomeIcon icon={["fab", "github"]} />
-            <i className="fab fa-github"></i>
     </main>
   );
 }
