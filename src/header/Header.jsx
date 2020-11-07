@@ -3,16 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Header.css";
 import { faGithub, faPython } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 function Header(...props) {
   useEffect(() => {}, []);
 
   return (
     <section className="header">
-      <a href="/">TCC | Fabiana Gomes | UFCG</a>
+      <Link to="/">TCC | Fabiana Gomes | UFCG</Link>
 
       <section>
-        <a href="/">Sobre</a>
+        <Link to="/sobre">Sobre</Link>
         <section className="dropdown">
           <button className="dropbtn">Recursos</button>
           <section className="dropdown-content">
