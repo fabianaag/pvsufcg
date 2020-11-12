@@ -1,7 +1,7 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import HighchartsItem from "highcharts/modules/item-series";
-
+import HighchartsCloud from "highcharts/modules/wordcloud";
 import React from "react";
 
 import {
@@ -12,6 +12,15 @@ import {
   etnias2019Options,
   dimensaoFamiliarOptions,
   rendaFamiliarOptions,
+  anoDeConclusaoOptions,
+  escolhaCursoOptions,
+  cursosEscolhidos2018Options,
+  cursosEscolhidos2019Options,
+  experienciaComPCOptions,
+  experienciaEnemOptions,
+  aprovadosSuperiorOptions,
+  ingressoInteresseOptions,
+  dedicacaoOptions,
 } from "./chartOptions";
 
 import "./Content.css";
@@ -20,28 +29,26 @@ import { getPublicPath } from "../utils";
 function Content(...props) {
   return (
     <main className="content">
-      <h2>Alcance dos Bairros</h2>
+      <h1>Dimensão Alcance</h1>
       <hr />
+      <h2>Alcance dos Bairros</h2>
       <section className="images">
         <section>
           <h4>2018</h4>
           <img
-            src={getPublicPath('images/bairros_2018_macro.png')}
+            src={getPublicPath("images/bairros_2018_macro.png")}
             alt="Alcance Bairros 2018"
           />
         </section>
         <section>
           <h4>2019</h4>
           <img
-            src={getPublicPath('images/bairros_2019_macro.png')}
+            src={getPublicPath("images/bairros_2019_macro.png")}
             alt="Alcance Bairros 2019"
-            style={{width:"110%"}}
+            style={{ width: "110%" }}
           />
         </section>
       </section>
-
-      <h2>Distribuição dos Alunos por Idade e Gênero</h2>
-      <hr />
       <section className="images">
         <section>
           <img
@@ -55,7 +62,10 @@ function Content(...props) {
           options={idadeEGeneroAmbosOptions}
         />
       </section>
-
+      
+      
+      <h1>Dimensão Pessoal</h1>
+      <hr />
       <section className="images">
         <HighchartsReact
           highcharts={Highcharts}
@@ -68,8 +78,6 @@ function Content(...props) {
         />
       </section>
 
-      <h2>Distribuição das Etnias</h2>
-      <hr />
       <section className="images">
         <HighchartsReact
           highcharts={HighchartsItem(Highcharts)}
@@ -82,46 +90,98 @@ function Content(...props) {
         />
       </section>
 
-      <h2>Estado Civil dos Alunos 2018 e 2019</h2>
-      <hr />
-      <center>
+      <section className="images">
         <img
           src={getPublicPath("images/estado_civil_alunos.png")}
           alt="Gênero e Idade Unido"
-          style={{width: "80%"}}
+          style={{ width: "60%" }}
         />
-      </center>
+      </section>
 
-
-      <h2>Distribuição dos Alunos em Relação a Filhos</h2>
+      <h1>Dimensão Familiar</h1>
       <hr />
-      <center>
-        <HighchartsReact 
+      <section className="images">
+        <HighchartsReact
           highcharts={Highcharts}
-          options={dimensaoFamiliarOptions} />
-      </center>
-
-      <h2>Distribuição dos Alunos em Relação a Renda Familiar</h2>
-      <hr/>
-      <center>
-        <HighchartsReact 
+          options={dimensaoFamiliarOptions}
+        />
+        <HighchartsReact
           highcharts={Highcharts}
-          options={rendaFamiliarOptions} />
-      </center>
+          options={rendaFamiliarOptions}
+        />
+      </section>
 
-      <h2>Quantidade de Alunos por Escola</h2>
+      <h1>Dimensão Escolar</h1>
       <hr />
       <section className="images escolas">
-          <img
-            src={getPublicPath("images/alunos_por_escola_2018.png")}
-            alt="Alunos por Escola 2018"
-          />
-          <img
-            src={getPublicPath("images/alunos_por_escola_2019.png")}
-            alt="Alunos por Escola 2019"
+        <img
+          src={getPublicPath("images/alunos_por_escola_2018.png")}
+          alt="Alunos por Escola 2018"
+        />
+        <img
+          src={getPublicPath("images/alunos_por_escola_2019.png")}
+          alt="Alunos por Escola 2019"
+        />
+      </section>
+
+      <section className="images">
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={anoDeConclusaoOptions}
+        />
+      </section>
+
+      <h1>Dimensão Interesses</h1>
+      <hr />
+
+      <section className="images">
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={escolhaCursoOptions}
+        />
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={experienciaComPCOptions}
+        />
+      </section>
+
+      <section className="images">
+        <HighchartsReact
+          highcharts={HighchartsCloud(Highcharts)}
+          options={cursosEscolhidos2018Options}
+        />
+
+        <HighchartsReact
+          highcharts={HighchartsCloud(Highcharts)}
+          options={cursosEscolhidos2019Options}
+        />
+      </section>
+
+      <section className="images"></section>
+
+      <h1>Dimensão Desempenho</h1>
+      <hr />
+      <section className="images">
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={experienciaEnemOptions}
+        />
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={aprovadosSuperiorOptions}
+        />
+      </section>
+
+      <section className="images">
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={ingressoInteresseOptions}
+        />
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={dedicacaoOptions}
           />
       </section>
-      
     </main>
   );
 }
