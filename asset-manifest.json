@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pvsufcg/static/css/main.e949536f.chunk.css",
-    "main.js": "/pvsufcg/static/js/main.4cf61272.chunk.js",
-    "main.js.map": "/pvsufcg/static/js/main.4cf61272.chunk.js.map",
+    "main.js": "/pvsufcg/static/js/main.18e99aaa.chunk.js",
+    "main.js.map": "/pvsufcg/static/js/main.18e99aaa.chunk.js.map",
     "runtime-main.js": "/pvsufcg/static/js/runtime-main.9819fd48.js",
     "runtime-main.js.map": "/pvsufcg/static/js/runtime-main.9819fd48.js.map",
     "static/js/2.a8954165.chunk.js": "/pvsufcg/static/js/2.a8954165.chunk.js",
     "static/js/2.a8954165.chunk.js.map": "/pvsufcg/static/js/2.a8954165.chunk.js.map",
     "index.html": "/pvsufcg/index.html",
-    "precache-manifest.4f9ca04168b098013a29b56d7a46ea35.js": "/pvsufcg/precache-manifest.4f9ca04168b098013a29b56d7a46ea35.js",
+    "precache-manifest.daf4e53d3972b1b1135f998c663c9e1a.js": "/pvsufcg/precache-manifest.daf4e53d3972b1b1135f998c663c9e1a.js",
     "service-worker.js": "/pvsufcg/service-worker.js",
     "static/css/main.e949536f.chunk.css.map": "/pvsufcg/static/css/main.e949536f.chunk.css.map",
     "static/js/2.a8954165.chunk.js.LICENSE.txt": "/pvsufcg/static/js/2.a8954165.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9819fd48.js",
     "static/js/2.a8954165.chunk.js",
     "static/css/main.e949536f.chunk.css",
-    "static/js/main.4cf61272.chunk.js"
+    "static/js/main.18e99aaa.chunk.js"
   ]
 }
