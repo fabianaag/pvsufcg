@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/item-series.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Dimensão Inscrito</h1>
+    <div id="multi_bar_etnia"></div>
+    <div id="bar_etnia"></div>
+    <div id="parlament_etnia"></div>
+    <div id="multi_bar_estadoCivil"></div>
+    <h1>Dimensão Familiar</h1>
+    <div id="pyramid_renda" style="width: 1000px; margin: auto;"></div>
+    <div id="piramide_renda"></div>
+    <div id="pyramid_rendaa"></div>
+    <div id="Gênero_filhos"></div>
+    <div id="Gênero_filhoo"></div>
+    <h1>Dimensão Interesses</h1>
+    <h1>Dimensão Emprego</h1>
+    <div id="sankey_performance"></div>
+    <ul>
+      <li>Quantos alunos trabalham e estudam?</li>
+      <li>
+        Dedicação parcial e aprovação? (apenas 10% das pessoas que trabalhavam
+        passaram, vs. 30% das pessoas que não trabalhavam)
+      </li>
+    </ul>
+    <h1>Dimensão Escola</h1>
+    <h1>Dimensão Desempenho</h1>
+    <h1>Dimensão Alcance</h1>
+
+    <h2>Renda média</h2>
+
+    <h2></h2>
+
+    <script>
+      var categories = [
+        "Até 1 salário mínimo (até R$ 998,00)",
+        "De 1 a 2 salários mínimos (de R$998,00 até R$ 1.996,00 )",
+        "De 2 a 3 salários mínimos (de R$1.996,00 até R$ 2.994,00 )",
+      ];
+
+      Highcharts.chart("piramide_renda", {
+        chart: {
+          type: "bar",
+        },
+        title: {
+          text: "Distribuição de alunos por Renda e Aprovação",
+        },
+        colors: [ '#5e5e5e','#0f7f7f'],
+        
+        xAxis: [
+          {
+            categories: categories,
+            reversed: false,
+            labels: {
+              step: 1,
+            },
+          },
+          {
+            // mirror axis on right side
+            opposite: true,
+            reversed: false,
+            categories: categories,
+            linkedTo: 0,
+            labels: {
+              step: 1,
+            },
+          },
+        ],
+        yAxis: {
+          title: {
+            text: null,
+          },
+          labels: {
+            formatter: function () {
+              return Math.abs(this.value);
+            },
+          },
+        },
+
+        plotOptions: {
+          series: {
+            stacking: "normal",
+          },
+        },
+
+        tooltip: {
+          formatter: function () {
+            return `
+              <b>Renda Familiar Mensal: ${this.point.category}</b>
+              <br/>
+              Quantidades de alunos (${this.series.name}): ${Math.abs(
+              this.point.y
+            )}
+            `;
+          },
+        },
+
+        series: [
+          {
+            name: "Reprovados",
+            data: [-32, -28, -14],
+          },
+          {
+            name: "Aprovados",
+            data: [17, 9, 3],
+          },
+        ],
+      });
+    </script>
+    <script>
+      /** Parlament Chart**/
+      let createParlamentChart = function ({
+        canvas_id,
+        title,
+        subtitle,
+        data,
+      }) {
+        return Highcharts.chart(canvas_id, {
+          chart: {
+            type: "item",
+          },
+          title: {
+            text: title,
+          },
+
+          subtitle: {
+            text: subtitle,
+          },
+
+          legend: {
+            labelFormat: '{name} <span style="opacity: 0.4">{y}</span>',
+          },
+
+          series: [
+            {
+              name: "Estudantes",
+              keys: ["name", "y", "color", "label"],
+              data: data,
+              dataLabels: {
+                enabled: true,
+                format: "{point.label}",
+              },
+
+              // Circular options
+              center: ["50%", "88%"],
+              size: "170%",
+              startAngle: -100,
+              endAngle: 100,
+            },
+          ],
+        });
+      };
+      let chartGeral = {
+        canvas_id: "parlament_etnia",
+        title: "Distribuição das Etnias",
+        subtitle:
+          "Tamanho dos grupos categorizados Autodeclaração Étnico-Racial.",
+        data: [
+          ["Indígena", 5, "#964B00", "INDÍGENA"],
+          ["Amarelo(a)", 9, "#FFBB00", "AMARELO(A)"],
+          ["Preto(a)", 18, "#00000", "PRETO(A)"],
+          ["Branco(a)", 19, "#EABD9D", "BRANCO(A)"],
+          ["Pardo(a)", 52, "#C77A58", "PARDO(A)"],
+        ],
+      };
+      createParlamentChart(chartGeral);
+    </script>
+    <script>
+      Highcharts.chart("multi_bar_estadoCivil", {
+        chart: {
+          type: "column",
+        },
+        title: {
+          text: "Faixa Etária por Estado Civil",
+        },
+        subtitle: {
+          text: "Quantidade de alunos por etnia e estado civil 2018",
+        },
+        colors: [
+    '#003c80',
+    '#fa7f72',
+    '#006600'
+    
+  ],
+        xAxis: {
+          categories: [
+            "17 anos ou menos",
+            "18 a 20",
+            "21 a 29",
+            "30 a 39",
+            "40 a 49",
+            "Acima de 50 anos",
+          ],
+          crosshair: true,
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Quantidade de alunos",
+          },
+        },
+        tooltip: {
+          headerFormat:
+            '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat:
+            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y} Alunos</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+          },
+        },
+        series: [
+          { data: [0,14, 65, 7, 0, 0], name: "Solteiro(a)" },
+          { data: [0,1, 7, 2, 4, 1], name: "Casado(a)/mora com um(a) companheiro(a)" },
+          { data: [0,0, 0, 2, 0, 0], name: "Separado(a) / divorciado(a) /desquitado(a)" },
+          
+        ],
+      });
+
+    </script>
+     <script>
+      Highcharts.chart("multi_bar_etnia", {
+        chart: {
+          type: "column",
+        },
+        title: {
+          text: "Faixa etária por etnia 2018",
+        },
+        subtitle: {
+          text: "Quantidade de alunos por etnia e faixa etária",
+        },
+        colors: [
+    '#FFBB00',
+    '#EABD9D',
+    '#964B00',
+    '#C77A58',
+    '#330000'
+  ],
+        xAxis: {
+          categories: [
+          "17 anos ou menos",
+            "18 a 20",
+            "21 a 29",
+            "30 a 39",
+            "40 a 49",
+            "Acima de 50 anos",
+          ],
+          crosshair: true,
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Quantidade de alunos",
+          },
+        },
+        tooltip: {
+          headerFormat:
+            '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat:
+            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y} Alunos</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+          },
+        },
+        series: [
+          { data: [0, 3, 4, 2, 0, 0], name: "Amarelo(a)" },
+          { data: [0, 6, 11, 2, 0, 0], name: "Branco(a)" },
+          { data: [0, 0, 4, 1, 0, 0], name: "Indígena" },
+          { data: [0, 5, 40, 4, 2, 1], name: "Pardo(a)" },
+          { data: [0, 1, 13, 2, 2, 0], name: "Preto(a)" },
+        ],
+      });
+
+    </script>
+        <script>
+          Highcharts.chart("bar_etnia", {
+            chart: {
+              type: "column",
+            },
+            title: {
+              text: "Faixa etária por etnia 2019",
+            },
+            subtitle: {
+              text: "Quantidade de alunos por etnia e faixa etária",
+            },
+            colors: [
+        '#FFBB00',
+        '#EABD9D',
+        '#964B00',
+        '#C77A58',
+        '#330000'
+      ],
+            xAxis: {
+              categories: [
+                "17 anos ou menos",
+                "18 a 20",
+                "21 a 29",
+                "30 a 39",
+                "40 a 49",
+                "Acima de 50 anos",
+              ],
+              crosshair: true,
+            },
+            yAxis: {
+              min: 0,
+              title: {
+                text: "Quantidade de alunos",
+              },
+            },
+            tooltip: {
+              headerFormat:
+                '<span style="font-size:10px">{point.key}</span><table>',
+              pointFormat:
+                '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y} Alunos</b></td></tr>',
+              footerFormat: "</table>",
+              shared: true,
+              useHTML: true,
+            },
+            plotOptions: {
+              column: {
+                pointPadding: 0.2,
+                borderWidth: 0,
+              },
+            },
+            series: [
+              { data: [0,2,0,0,0,0], name: "Amarelo(a)" },
+              { data: [5,3,30,1,0,0], name: "Branco(a)" },
+              { data: [0,1,0,0,0,0], name: "Indígena" },
+              { data: [2,6,35,6,0,1], name: "Pardo(a)" },
+              { data: [0,4,7,0,0,0], name: "Preto(a)" },
+            ],
+          });
+    
+        </script>
+        <script>
+          //Renda Familiar
+          Highcharts.chart("pyramid_rendaa", {
+            chart: {
+              type: "pyramid",
+            },
+            title: {
+              text: "Distribuição de alunos por Renda Familiar -2019",
+              x: -50,
+            },
+    
+            colors: [
+            '#7a1b20','#5e5e5e','#0f7f7f','#8ecd82'
+      ],
+            plotOptions: {
+              series: {
+                dataLabels: {
+                  enabled: true,
+                  format: "<b>{point.name}</b> ({point.y:,.0f})",
+                  softConnector: true,
+                },
+                center: ["50%", "50%"],
+                width: "60%",
+              },
+            },
+            legend: {
+              enabled: false,
+            },
+            series: [
+              {
+                name: "Quantidade de alunos",
+                data: [
+                  ["Nenhuma Renda",3],
+                  ["Até 1 salário mínimo (até R$ 998,00)", 42],
+                  ["De 1 a 2 salários mínimos (de R$998,00 até R$ 1.996,00 )", 56],
+                  ["De 2 a 3 salários mínimos (de R$1.996,00 até R$ 2.994,00 )",
+                    2,
+                  ],
+                ],
+              },
+            ],
+    
+            responsive: {
+              rules: [
+                {
+                  condition: {
+                    maxWidth: 500,
+                  },
+                  chartOptions: {
+                    plotOptions: {
+                      series: {
+                        dataLabels: {
+                          inside: true,
+                        },
+                        center: ["50%", "50%"],
+                        width: "100%",
+                      },
+                    },
+                  },
+                },
+              ],
+            },
+          });
+        </script>
+    <script>
+      //Renda Familiar
+      Highcharts.chart("pyramid_renda", {
+        chart: {
+          type: "pyramid",
+        },
+        title: {
+          text: "Distribuição de alunos por Renda Familiar",
+          x: -50,
+        },
+
+        colors: [
+        '#5e5e5e','#0f7f7f','#8ecd82'
+  ],
+        plotOptions: {
+          series: {
+            dataLabels: {
+              enabled: true,
+              format: "<b>{point.name}</b> ({point.y:,.0f})",
+              softConnector: true,
+            },
+            center: ["50%", "50%"],
+            width: "40%",
+          },
+        },
+        legend: {
+          enabled: false,
+        },
+        series: [
+          {
+            name: "Quantidade de alunos",
+            data: [
+              ["Até 1 salário mínimo (até R$ 998,00)", 49],
+              ["De 1 a 2 salários mínimos (de R$998,00 até R$ 1.996,00 )", 37],
+              ["De 2 a 3 salários mínimos (de R$1.996,00 até R$ 2.994,00 )",
+                17,
+              ],
+            ],
+          },
+        ],
+
+        responsive: {
+          rules: [
+            {
+              condition: {
+                maxWidth: 500,
+              },
+              chartOptions: {
+                plotOptions: {
+                  series: {
+                    dataLabels: {
+                      inside: true,
+                    },
+                    center: ["50%", "50%"],
+                    width: "100%",
+                  },
+                },
+              },
+            },
+          ],
+        },
+      });
+    </script>
+    <script>
+      //Trabalho/Aprovação
+      Highcharts.chart("sankey_performance", {
+        title: {
+          text: "Diagrama de Sankey, Ocupação vs. Aprovação",
+        },
+        subtitle: {
+          text:
+            "Como desempenham os alunos que trabalham em comparação com os que apenas estudam?",
+        },
+        colors: [
+        '#003c80','#404040','#8ecd82','#a87bd6'],
+        accessibility: {
+          point: {
+            valueDescriptionFormat:
+              "{index}. {point.from} to {point.to}, {point.weight}.",
+          },
+        },
+        series: [
+          {
+            keys: ["from", "to", "weight"],
+            data: [
+              ["Trabalha [29]", "Reprovado(a)", 26],
+              ["Trabalha [29]", "Aprovado(a)", 3],
+              ["Não Trabalha [74]", "Reprovado(a)", 48],
+              ["Não Trabalha [74]", "Aprovado(a)", 26],
+            ],
+            type: "sankey",
+            name: "Sankey demo series",
+          },
+        ],
+      });
+    </script>
+        <script>
+          //Genero/filhos
+          Highcharts.chart("Gênero_filhoo", {
+            title: {
+              text: "Relação Gênero vs. Filhos",
+            },
+            subtitle: {
+              text:
+                "Relação Gênero e filhos - 2019",
+            },
+            colors: [
+            '#4b4b4b','#404040','#003c80','#d2cb7f','#8ecd82'],
+            accessibility: {
+              point: {
+                valueDescriptionFormat:
+                  "{index}. {point.from} to {point.to}, {point.weight}.",
+              },
+            },
+            series: [
+              {
+                keys: ["from", "to", "weight"],
+                data: [
+                ["Homem ", "Não tenho filhos(as)", 29],
+                  ["Homem ", "Um(a)", 0],
+                  ["Homem ", "Dois(duas)", 0],
+                  ["Mulher", "Não tenho filhos(as)", 68],
+                  ["Mulher", "Um(a)", 4],
+                  ["Mulher", "Dois(duas)", 2],
+                 
+               
+                ],
+                type: "sankey",
+                name: "Gênero - Filhos",
+              },
+            ],
+          });
+        </script>
+    <script>
+      //Genero/filhos
+      Highcharts.chart("Gênero_filhos", {
+        title: {
+          text: "Relação Gênero vs. Filhos",
+        },
+        subtitle: {
+          text:
+            "Relação Gênero e filhos - 2018",
+        },
+        colors: [
+        '#4b4b4b','#404040','#003c80','#d2cb7f','#a87bd6','#8ecd82'],
+        accessibility: {
+          point: {
+            valueDescriptionFormat:
+              "{index}. {point.from} to {point.to}, {point.weight}.",
+          },
+        },
+        series: [
+          {
+            keys: ["from", "to", "weight"],
+            data: [
+            ["Homem ", "Não tenho filhos(as)", 30],
+              ["Homem ", "Um(a)", 9],
+              ["Homem ", "Dois(duas)", 5],
+              ["Homem ", "Três", 1],
+              ["Mulher", "Não tenho filhos(as)", 48],
+              ["Mulher", "Um(a)", 9],
+              ["Mulher", "Dois(duas)", 1],
+              ["Mulher", "Três", 0],
+           
+            ],
+            type: "sankey",
+            name: "Gênero - Filhos",
+          },
+        ],
+      });
+    </script>
+    </script>
+  </body>
+</html>
