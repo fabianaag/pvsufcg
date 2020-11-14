@@ -34,4 +34,3 @@ Após a análise descritiva dos dados dos alunos pertencentes ao Pré-Vestibular
 <a id="1"></a>
 ¹ - PROPEX - UFCG. Pré-Vestibular Solidário, 2000. Disponível em: http://extensao.ufcg.edu.br/projetos-de-extensao/pre-vestibular-solidario.html. Acesso em: 09 de set. de 2020  
 <a id="2"></a>
-² - IBGE - Instituto Brasileiro de Geografia e Estatística. Censo, 2010. Disponível em: https://censo2010.ibge.gov.br/. Acesso em: 09 de set. de 2020  
