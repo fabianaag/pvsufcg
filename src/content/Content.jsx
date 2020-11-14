@@ -62,8 +62,7 @@ function Content(...props) {
           options={idadeEGeneroAmbosOptions}
         />
       </section>
-      
-      
+
       <h1>Dimensão Pessoal</h1>
       <hr />
       <section className="images">
@@ -177,10 +176,7 @@ function Content(...props) {
           highcharts={Highcharts}
           options={ingressoInteresseOptions}
         />
-        <HighchartsReact
-          highcharts={Highcharts}
-          options={dedicacaoOptions}
-          />
+        <HighchartsReact highcharts={Highcharts} options={dedicacaoOptions} />
       </section>
     </main>
   );

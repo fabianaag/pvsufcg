@@ -4,7 +4,7 @@
 
 
 **CURSO DE CIÊNCIA DA COMPUTAÇÃO**  
-**ALUNO(A)**: FABIANA ALVES GOMES 
+**ALUNO(A)**: FABIANA ALVES 
 
 **PREVESTIBULAR SOLIDÁRIO UFCG**  
 **Conhecendo o perfil dos alunos**

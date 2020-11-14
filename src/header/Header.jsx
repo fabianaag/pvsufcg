@@ -9,8 +9,9 @@ function Header(...props) {
   useEffect(() => {}, []);
 
   return (
+    <>
     <section className="header">
-      <Link to="/">TCC | Fabiana Gomes | UFCG</Link>
+      <Link to="/">TCC | Fabiana Alves | UFCG</Link>
 
       <section>
         <Link to="/sobre">Sobre</Link>
@@ -29,6 +30,17 @@ function Header(...props) {
         </section>
       </section>
     </section>
+    <header className="header-image">
+      <section>
+        <h1>
+          Análise do perfil dos alunos que buscam o Pré-Vestibular Solidário da Universidade Federal de Campina Grande
+        </h1>
+        <h3>Trabalho de Conclusão de Curso</h3>
+
+      </section>
+      
+    </header>
+    </>
   );
 }
 
