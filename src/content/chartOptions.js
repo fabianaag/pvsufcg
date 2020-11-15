@@ -1248,4 +1248,97 @@ export const dedicacaoOptions = {
   },
 };
 
+export const distPorAreaOptions = {
+  chart: {
+    type: "column",
+  },
 
+  title: {
+    text: "Distribuição por Área dos Cursos",
+  },
+  colors: ["#00008b", "#a51b0b", "#006400"],
+  subtitle: {
+    text: "Área dos cursos mais escolhidos pelos alunos do PVS/CG",
+  },
+
+  legend: {
+    align: "right",
+    verticalAlign: "middle",
+    layout: "vertical",
+  },
+
+  xAxis: {
+    categories: ["2018", "2019"],
+    labels: {
+      x: -10,
+    },
+  },
+
+  yAxis: {
+    allowDecimals: false,
+    title: {
+      text: "",
+    },
+  },
+  plotOptions: {
+    series: {
+      borderWidth: 0,
+      dataLabels: {
+        enabled: true,
+        format: "{point.y:.1f}%",
+      },
+    },
+  },
+  tooltip: {
+    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+    pointFormat:
+      '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>',
+  },
+  series: [
+    {
+      name: "Ciências Exatas",
+      data: [44.5, 29.1],
+    },
+    {
+      name: "Ciências Humanas",
+      data: [27.7, 32.2],
+    },
+    {
+      name: "Ciências Biológicas",
+      data: [27.7, 38.7],
+    },
+  ],
+
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 500,
+        },
+        chartOptions: {
+          legend: {
+            align: "center",
+            verticalAlign: "bottom",
+            layout: "horizontal",
+          },
+          yAxis: {
+            labels: {
+              align: "left",
+              x: 0,
+              y: -5,
+            },
+            title: {
+              text: null,
+            },
+          },
+          subtitle: {
+            text: null,
+          },
+          credits: {
+            enabled: false,
+          },
+        },
+      },
+    ],
+  },
+};

@@ -22,6 +22,7 @@ import {
   ingressoInteresseOptions,
   dedicacaoOptions,
   dominioLinguaOptions,
+  distPorAreaOptions,
 } from "./chartOptions";
 
 import "./Content.css";
@@ -149,6 +150,11 @@ function Content(...props) {
         <HighchartsReact
           highcharts={Highcharts}
           options={dominioLinguaOptions}
+        />
+
+        <HighchartsReact  
+          highcharts={Highcharts}
+          options={distPorAreaOptions}
         />
       </section>
 
