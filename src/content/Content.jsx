@@ -21,6 +21,7 @@ import {
   aprovadosSuperiorOptions,
   ingressoInteresseOptions,
   dedicacaoOptions,
+  dominioLinguaOptions,
 } from "./chartOptions";
 
 import "./Content.css";
@@ -138,9 +139,16 @@ function Content(...props) {
           highcharts={Highcharts}
           options={escolhaCursoOptions}
         />
+
         <HighchartsReact
           highcharts={Highcharts}
           options={experienciaComPCOptions}
+        />
+      </section>
+      <section className="images">
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={dominioLinguaOptions}
         />
       </section>
 
