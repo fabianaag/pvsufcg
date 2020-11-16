@@ -20,7 +20,7 @@
 
 .header-image {
   background-image: url('/pvsufcg/images/bg.jpg');
-  height: 18rem;
+  height: 22rem;
   background-size: cover;
   color: var(--white);
   display: grid;

@@ -1,8 +1,9 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import About from "./about/About";
-import Content from "./content/Content";
-import Header from "./header/Header";
+import About from "./components/about/About";
+import Content from "./components/content/Content";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 import "./App.css";
 
@@ -18,7 +19,7 @@ function App() {
             <Route path="/*" render={() => "Conteudo não encontrado"} />
           </Switch>
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </div>
   );
