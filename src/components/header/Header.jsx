@@ -18,11 +18,11 @@ function Header(...props) {
         <section className="dropdown">
           <button className="dropbtn">Recursos</button>
           <section className="dropdown-content">
-            <a href="#alo">
+            <a href="https://github.com/fabianaag/TCC/tree/master/notebooks" target="_blank" rel="noreferrer noopener">
               <FontAwesomeIcon icon={faPython} />&nbsp;
-              Manipulação de dados com jupyter
+              Manipulação de dados
             </a>
-            <a href="#amor">
+            <a href="https://github.com/fabianaag/TCC/tree/master/dados"  target="_blank" rel="noreferrer noopener">
               <FontAwesomeIcon icon={faGithub} />&nbsp;
               Artefatos Github
             </a>
@@ -33,7 +33,7 @@ function Header(...props) {
     <header className="header-image">
       <section>
         <h1>
-          Análise do perfil dos alunos que buscam o Pré-Vestibular Solidário da Universidade Federal de Campina Grande
+          Análise do perfil dos alunos que buscam o Pré-Vestibular Solidário da <br/> Universidade Federal de Campina Grande
         </h1>
         <h3>Trabalho de Conclusão de Curso</h3>
 
