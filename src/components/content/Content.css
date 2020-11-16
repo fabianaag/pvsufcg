@@ -28,6 +28,13 @@
 
 .escolas > * {
     width: 45%;
-    height: initial;
-    
+    height: initial;   
+}
+
+
+@media (max-width: 900px) {
+    .images {
+        flex-direction: column;
+        align-items: center !important;
+    }
 }
